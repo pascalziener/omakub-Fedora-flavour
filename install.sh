@@ -5,6 +5,9 @@ set -e
 sudo dnf upgrade -y
 sudo dnf install -y curl git unzip
 
+# Needed by some installers
+sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
 # Ensure computer doesn't go to sleep or lock while installing
 gsettings set org.gnome.desktop.screensaver lock-enabled false
 gsettings set org.gnome.desktop.session idle-delay 0
