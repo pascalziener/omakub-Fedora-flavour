@@ -1,7 +1,12 @@
 # Gum is used for the Omakub commands for tailoring Omakub after the initial install
-cd /tmp
+echo '[charm]
+name=Charm
+baseurl=https://repo.charm.sh/yum/
+enabled=1
+gpgcheck=1
+gpgkey=https://repo.charm.sh/yum/gpg.key' | sudo tee /etc/yum.repos.d/charm.repo
+
+sudo dnf makecache
 GUM_VERSION="0.14.1" # Use known good version
-wget -O gum.deb "https://github.com/charmbracelet/gum/releases/latest/download/gum_${GUM_VERSION}_amd64.deb"
-sudo apt install -y ./gum.deb
-rm gum.deb
-cd -
+sudo dnf install -< gum-${GUM_VERSION}-1.x86_64
+
